@@ -1,24 +1,75 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Drawer } from 'expo-router/drawer';
+import { PaperProvider, MD3DarkTheme as DefaultTheme } from 'react-native-paper';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#FF6347', // Tomato red
+    secondary: '#FFA500', // Orange
+    background: '#121212',
+    surface: '#1E1E1E',
+  },
 };
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <GestureHandlerRootView style={styles.container}>
+      <PaperProvider theme={theme}>
+        <Drawer
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#1E1E1E',
+            },
+            headerTintColor: '#FF6347',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            drawerStyle: {
+              backgroundColor: '#1E1E1E',
+            },
+            drawerActiveTintColor: '#FF6347',
+            drawerInactiveTintColor: '#FFFFFF',
+          }}
+        >
+          <Drawer.Screen
+            name="index"
+            options={{
+              drawerLabel: 'Calcolatore Impasto',
+              title: 'pizzApp',
+            }}
+          />
+          <Drawer.Screen
+            name="history"
+            options={{
+              drawerLabel: 'Cronologia',
+              title: 'I Miei Impasti',
+            }}
+          />
+          <Drawer.Screen
+            name="favorites"
+            options={{
+              drawerLabel: 'Preferiti',
+              title: 'Impasti Preferiti',
+            }}
+          />
+          <Drawer.Screen
+            name="results"
+            options={{
+              drawerItemStyle: { display: 'none' }, // Nascondi dal drawer
+              title: 'Risultati Impasto',
+            }}
+          />
+        </Drawer>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
