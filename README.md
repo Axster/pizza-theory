@@ -2,7 +2,7 @@
 
 **pizzApp** è un calcolatore per impasti diretti di pizza, sviluppato internamente come un'applicazione "Universale" usando **React Native** ed **Expo**. L'applicazione è predisposta in modo nativo per funzionare cross-platform sui sistemi operativi Mobile (iOS, Android) e sui browser web mantenendo la stessa UI e la medesima struttura di componenti.
 
-> Puoi trovare i file di progettazione completi e documentati (`SPECIFICATIONS.md`, `task.md`, `implementation_plan.md` e `PROJECT_STRUCTURE.md`) all'interno della cartella `/docs`.
+> Puoi trovare i file di progettazione completi e documentati ([`SPECIFICATIONS.md`](docs/SPECIFICATIONS.md), [`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) e [`AI_INSTRUCTIONS.md`](docs/AI_INSTRUCTIONS.md)) all'interno della cartella `/docs`.
 
 ---
 
