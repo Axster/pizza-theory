@@ -32,13 +32,54 @@ L'engine di pizzApp opera su queste basi: quando il sistema decide arbitrariamen
 
 ### 🔮 Prossimi Sviluppi (Roadmap)
 
-Siamo costantemente al lavoro per espandere le capacità e la componente didattica del calcolatore! Nei prossimi aggiornamenti tratteremo:
-- **Puntata e Appretto**: Verrà inserita la ripartizione scientifica delle ore dedicate alla "Puntata" (prima lievitazione in massa) e "Appretto" (lievitazione in panetti), incrociate alle tempistiche di cella frigorifera o ambiente.
-- **Sezione Cottura**: Al termine del calcolo comparirà una sezione che ti permetterà di selezionare la **tipologia di forno** in tuo possesso (Forno a Legna, Elettrico, Fornetto Pizza o Gas) garantendoti tutorial sui tempi di cottura e le temperature ottimali.
-- **Glossario Interattivo (Tooltips)**: L'Applicazione si doterà di praticissime icone "?" accanto alle voci di calcolo principali. Toccandole, si apriranno dei balloon per spiegare in via didattica la variabile.
-- **Trasparenza sul Lievito (Recipe Info)**: Nella schermata di ricetta risiederà un'icona esplicativa del lievito che evidenzierà matematicamente quel singolo decimale. Nel caso specifico del Lievito Madre, verrà chiarito esplicitamente come il sistema provvederà in autonomia al **ricalcolo di peso e idratazione**, scorporando preventivamente l'acqua già contenuta al 50% nel lievito solido, così da preservare in purezza l'idratazione finale desiderata!
-- **Temperatura Fine Impasto (TFI)**: Calcolo automatico della temperatura dell'acqua da inserire calcolata sottraendo al target chimico la temperatura ambiente e il surriscaldamento generato dall'impastatrice.
-- **Impasti Indiretti (Biga e Poolish)**: Introduzione della progettazione per prefermenti avanzati, per consentire all'utente di scorporare farina, idratazione e lievito del calcolo base al fine di dedicare quote precise al proprio pre-impasto.
+Siamo costantemente al lavoro per espandere le capacità e la componente didattica del calcolatore! Di seguito le priorità di sviluppo per i prossimi aggiornamenti:
+
+1. **Sezione "Forno" e "Cottura" in Ricetta**
+   Disporremo per l'utente una sezione forno, in cui poter inserire la temperatura massima del forno (facoltativa, default a 350°C). Se inserita, apparirà nella ricetta il tempo di cottura, calcolato in base alla temperatura inserita e al tipo di impasto (idratazione). Aggiungeremo all'interno della sezione (non come tip) l'informazione che l'uso di un forno che non arriva ad almeno 300 gradi (come i classici elettrici da cucina) è fortemente sconsigliato. Ci sarà anche una spunta facoltativa "Cielo e platea regolabili" (con un tip che ne spiega il significato): se selezionata, nella ricetta apparirà la temperatura separata di cielo e platea, altrimenti comparirà la temperatura generale.
+
+2. **Inserimento Tip Informativi**
+   L'applicazione verrà dotata di pratiche icone (tip) per spiegare nel dettaglio le dinamiche dell'impasto, le voci di calcolo principali e i consigli su impasto e cottura.
+
+3. **Aggiornamento Lieviti**
+   Oltre ai lieviti selezionabili attuali (Lievito di birra fresco, secco istantaneo, madre solido), aggiungeremo una voce "Altri tipi" che prevedrà:
+   - *Lievito madre liquido* (Li.Co.Li.)
+   - *Lievito di birra secco attivo* (mostrando tra i consigli una breve spiegazione su come attivarlo prima dell'uso).
+
+4. **Puntata e Appretto**
+   Verrà inserita la ripartizione scientifica delle ore dedicate alla "Puntata" (prima lievitazione in massa) e "Appretto" (lievitazione in panetti), incrociate alle tempistiche di cella frigorifera o ambiente. Vi sarà una sezione dedicata nella ricetta finale, in caso di selezione di pizza classica/verace che è la selezione di default.
+
+5. **Switch Pizza in Teglia o Classica/Verace**
+   Aggiunta di uno switch per scegliere "Impasto per pizza in teglia" o "Classica (verace)" per agganciare in automatico diversi valori di default al motore di calcolo, sviluppando guide e parametri ad hoc per l'impasto in teglia.
+
+6. **Impostazioni**
+   Gestione preferenze utente: cambio lingua (Italiano/Inglese), cambio tema (Chiaro/Scuro), unità di misura del peso (g, kg, lb, oz) e temperatura (°C o °F).
+
+7. **Modifica Sezione Farina (Inserimento manuale e Multi-Farina)**
+   Sotto il campo W della farina inseriremo la spunta "Inserisci manualmente il peso della farina" (con tip annesso). Se flaggata, si disabiliterà il campo totale impasto e comparirà il campo "peso", che ricalcolerà la quantità finale dell'impasto. Inoltre, implementeremo lo switch "Una farina / Più farine". Scegliendo "Più farine" si potranno aggiungere fino a 5 farine diverse fornendo il relativo W (e il peso, se la spunta suddetta è attiva; altrimenti il motore bilancerà le quantità per raggiungere la forza media necessaria). I controlli incrociati valideranno sempre se le scelte dell'utente sono compatibili.
+
+8. **Calcolo W**
+   Una pagina dedicata con uno switch: "W da peso farina" o "Peso farina da W". 
+   - *W da peso farina*: inserendo peso e W di diverse farine ti darà il W finale calcolato in media ponderata. 
+   - *Peso farina da W*: inserendo il W desiderato e i W delle diverse farine, ti darà il peso esatto di ogni farina da inserire. 
+   I calcoli saranno condivisibili; tutti i campi obbligatori con limiti esatti impostati.
+
+9. **Calcolo Idratazione**
+   Una pagina dedicata con uno switch "A partire da:" con opzioni "Percentuale idratazione" o "Dosi".
+   - *Percentuale*: si inserisce il peso della farina e la %, ricavando la quantità d'acqua.
+   - *Dosi*: si inserisce farina totale e l'acqua in grammi/litri per calcolare la percentuale idratata.
+
+10. **Temperatura Acqua e Sezione Dati Avanzati con Modalità Impasto**
+    Una nuova area "Dati Avanzati" raggrupperà Modalità Impasto e Prefermento. 
+    La *"Modalità Impasto"* permetterà di selezionare: A mano, Impastatrice o Planetaria, perfezionando il calcolo del riscaldamento della massa in lavorazione. Il calcolo della *Temperatura dell'acqua* valuterà l'idratazione, la TA e la modalità d'impasto per indicare di usare acqua da frigo, a TA o riscaldata (indicando i gradi). Per l'impasto "a mano", i consigli della ricetta suggeriranno pause e pieghe per ottimizzare la forza del glutine.
+
+11. **Prefermento (Biga o Poolish)**
+    All'interno della sezione "Dati Avanzati" ci sarà uno switch tra Biga e Poolish. A seguito della selezione, verrà aggiunta in ricetta una sezione "Prefermento" con le rispettive quantità di acqua, farina (calcolata dinamicamente anche su multi-farine) e lievito, sottraendo i pesi all'impasto per ricalcoleranno le dosi finali con precisione scientifica.
+
+12. **Pagina Glossario**
+    All'interno del menu risiederà un glossario con la spiegazione dei termini tecnici utilizzati (W, Idratazione, Tipi di Lievito, etc.).
+
+13. **Redesign App**
+    Rivisitazione dell'interfaccia in maniera progressiva, puntando a standard di alta qualità visuale per elevare l'esperienza utente a un livello professionale premium.
 
 ### 🛡️ Controlli di Proporzione Intelligenti
 
