@@ -18,7 +18,11 @@ const safeGetItem = async (key: string): Promise<string | null> => {
   if (IS_WEB) {
     try { return window.localStorage.getItem(key); } catch (e) { return null; }
   }
-  return await AsyncStorage.getItem(key);
+  try {
+    return await AsyncStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
 };
 
 const safeSetItem = async (key: string, value: string): Promise<void> => {
@@ -26,7 +30,11 @@ const safeSetItem = async (key: string, value: string): Promise<void> => {
     try { window.localStorage.setItem(key, value); } catch (e) {}
     return;
   }
-  await AsyncStorage.setItem(key, value);
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (e) {
+    // AsyncStorage non disponibile (es. Expo Go con versione incompatibile)
+  }
 };
 
 export const Storage = {
@@ -104,7 +112,7 @@ export const Storage = {
     const history = await this.getHistory();
     const updatedHistory = history.filter(item => item.id !== id);
     try {
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedHistory));
+      await safeSetItem(STORAGE_KEY, JSON.stringify(updatedHistory));
     } catch (e) {
       console.error('Error deleting history item', e);
     }
