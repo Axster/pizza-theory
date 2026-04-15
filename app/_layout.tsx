@@ -38,7 +38,7 @@ export default function Layout() {
             name="index"
             options={{
               drawerLabel: 'Calcolatore Impasto',
-              title: 'pizzApp',
+              title: 'Pizza Theory',
             }}
           />
           <Drawer.Screen

@@ -1,6 +1,6 @@
-# Struttura e Architettura di pizzApp
+# Struttura e Architettura di Pizza Theory
 
-Questo documento illustra l'architettura tecnica del progetto `pizzApp`, le librerie scelte, e l'approccio allo sviluppo dell'interfaccia utente (UI).
+Questo documento illustra l'architettura tecnica del progetto `Pizza Theory`, le librerie scelte, e l'approccio allo sviluppo dell'interfaccia utente (UI).
 
 ## 1. Architettura di Base
 Il progetto è basato su **Expo**. Expo permette di sviluppare applicazioni **Universal React** (scrivendo componenti React Native che vengono compilati sia per Mobile iOS/Android che per Web Browser).

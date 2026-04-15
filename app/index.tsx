@@ -99,7 +99,7 @@ export default function Home() {
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.header}>
           <Image source={require('../assets/images/logo.png')} style={styles.logo} />
-          <Text variant="headlineMedium" style={{ color: theme.colors.primary, fontWeight: 'bold' }}>pizzApp</Text>
+          <Text variant="headlineMedium" style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Pizza Theory</Text>
         </View>
 
         <Text variant="bodyLarge" style={styles.subtitle}>Calcola il tuo impasto ideale</Text>

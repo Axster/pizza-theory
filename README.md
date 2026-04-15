@@ -1,6 +1,6 @@
-# pizzApp 🍕
+# Pizza Theory 🍕
 
-**pizzApp** è un calcolatore per impasti diretti di pizza, sviluppato internamente come un'applicazione "Universale" usando **React Native** ed **Expo**. L'applicazione è predisposta in modo nativo per funzionare cross-platform sui sistemi operativi Mobile (iOS, Android) e sui browser web mantenendo la stessa UI e la medesima struttura di componenti.
+**Pizza Theory** è un calcolatore per impasti diretti di pizza, sviluppato internamente come un'applicazione "Universale" usando **React Native** ed **Expo**. L'applicazione è predisposta in modo nativo per funzionare cross-platform sui sistemi operativi Mobile (iOS, Android) e sui browser web mantenendo la stessa UI e la medesima struttura di componenti.
 
 > Puoi trovare i file di progettazione completi e documentati ([`SPECIFICATIONS.md`](docs/SPECIFICATIONS.md), [`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) e [`AI_INSTRUCTIONS.md`](docs/AI_INSTRUCTIONS.md)) all'interno della cartella `/docs`.
 
@@ -8,7 +8,7 @@
 
 ## 🧮 Obiettivo e Filosofia (Il Metodo AVPN)
 
-L'obiettivo fondamentale dell'algoritmo di **pizzApp** è usare come base intrinseca i rigidi valori stabiliti dall'**Associazione Verace Pizza Napoletana (AVPN)**, per poi ricalcolarli in modo "intelligente" e matematico qualora le esigenze o le condizioni esterne dell'utente varino.
+L'obiettivo fondamentale dell'algoritmo di **Pizza Theory** è usare come base intrinseca i rigidi valori stabiliti dall'**Associazione Verace Pizza Napoletana (AVPN)**, per poi ricalcolarli in modo "intelligente" e matematico qualora le esigenze o le condizioni esterne dell'utente varino.
 
 La logica del motore agisce su due binari:
 1. **AVPN Puro (Il Vangelo)**: Se i parametri facoltativi (Idratazione %, Ore Lievitazione, Forza W) non vengono inseriti, i valori tradizionali AVPN diventano l'assoluto punto di riferimento (es. idratazione matematica 57% e maturazioni base di 8h a temperatura ambiente). **L'unico fattore che farà ricalcolare i dosaggi "scolpiti sulla pietra" sarà in questo caso la variazione di Temperatura Ambiente** inserita, che andrà a modificare esponenzialmente l'utilizzo dei lieviti con la curva di Van't Hoff.
@@ -25,10 +25,10 @@ Alla base delle equazioni vi sono questi principi cardine:
 
 ## 🧬 Biologia: Lievitazione vs Maturazione
 
-Spesso nell'arte bianca si fondono i concetti di Lievitazione e Maturazione, ma sono fenomenti biologicamente distinti. **L'algoritmo di pizzApp ingloba categoricamente entrambi all'interno del calcolo generale delle tue "Ore di Lievitazione"**:
+Spesso nell'arte bianca si fondono i concetti di Lievitazione e Maturazione, ma sono fenomenti biologicamente distinti. **L'algoritmo di Pizza Theory ingloba categoricamente entrambi all'interno del calcolo generale delle tue "Ore di Lievitazione"**:
 - **Lievitazione (L'Aumento di Volume)**: È l'azione in cui il lievito ingerisce zuccheri e produce gas gonfiando il glutine. Avviene in modo estremamente rapido a Temperatura Ambiente, ma si anestetizza quasi totalmente posizionando l'impasto in Frigorifero.
 - **Maturazione (La Digeribilità e Sapore)**: È il lavoro a lenta cessione degli enzimi naturali della farina che scompongono gli amidi complessi. Questo processo è ciò che rende la pizza esplosiva in forno e leggerissima nello stomaco. Al contrario della lievitazione, **la maturazione non si ferma al freddo**!
-L'engine di pizzApp opera su queste basi: quando il sistema decide arbitrariamente di piazzare per lunghe ore il tuo impasto in Frigorifero (es. se selezioni Farine W300 o più), lo fa proprio con lo scopo di placare a forza la *Lievitazione*, per dare il tempo chimico alla *Maturazione enzimatica* di disintegrare le proteine complesse di quella farina, preservando l'impasto dal rovistarsi!
+L'engine di Pizza Theory opera su queste basi: quando il sistema decide arbitrariamente di piazzare per lunghe ore il tuo impasto in Frigorifero (es. se selezioni Farine W300 o più), lo fa proprio con lo scopo di placare a forza la *Lievitazione*, per dare il tempo chimico alla *Maturazione enzimatica* di disintegrare le proteine complesse di quella farina, preservando l'impasto dal rovistarsi!
 
 ### 🔮 Prossimi Sviluppi (Roadmap)
 
@@ -97,7 +97,7 @@ Se l'utente ha il vizio estremo di voler idratare un impasto al 90% ma tralascia
 
 ## 🚀 Come avviare l'app
 
-Assicurati di essere nella cartella root del progetto (`/Users/andrea/Desktop/pizzApp`) dal tuo terminale e, qualora non l'avessi ancora fatto, esegui:
+Assicurati di essere nella cartella root del progetto (`/Users/andrea/Desktop/Pizza Theory`) dal tuo terminale e, qualora non l'avessi ancora fatto, esegui:
 ```bash
 npm install
 ```

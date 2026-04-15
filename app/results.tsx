@@ -51,7 +51,7 @@ Tempistiche:
 - Ore Temp. Ambiente: ${result.hoursRT}h
 - Ore Frigo: ${result.hoursFridge}h${fridgeAcclimationLine}
 
-Creata con pizzApp 🍕`;
+Creata con Pizza Theory 🍕`;
 
     try {
       if (Platform.OS === 'web') {

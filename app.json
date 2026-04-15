@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "temp_app",
-    "slug": "temp_app",
+    "name": "Pizza Theory",
+    "slug": "pizza-theory",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "tempapp",
+    "scheme": "pizzatheory",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

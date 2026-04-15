@@ -1,7 +1,7 @@
-# pizzApp - Agent Context & Rules
+# Pizza Theory - Agent Context & Rules
 
 ## 🎯 Project Overview
-pizzApp is an advanced, strictly cross-platform (React Native + Expo Web) pizza dough calculator. It's not a standard linear calculator; it’s an "Expert System" mathematically rooted in the AVPN (Associazione Verace Pizza Napoletana) protocols and refined by teachings of modern masters (like Giorilli, Bonci, and 'Malati di Pizza').
+Pizza Theory is an advanced, strictly cross-platform (React Native + Expo Web) pizza dough calculator. It's not a standard linear calculator; it’s an "Expert System" mathematically rooted in the AVPN (Associazione Verace Pizza Napoletana) protocols and refined by teachings of modern masters (like Giorilli, Bonci, and 'Malati di Pizza').
 
 ## 🧬 Core Logic (The AVPN Engine)
 Any AI agent interacting with this repository MUST respect these mathematical constraints:

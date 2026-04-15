@@ -11,7 +11,7 @@ export interface HistoryItem {
   isFavorite?: boolean;
 }
 
-const STORAGE_KEY = '@pizzApp_history_v1';
+const STORAGE_KEY = '@pizzatheory_history_v1';
 const IS_WEB = Platform.OS === 'web';
 
 const safeGetItem = async (key: string): Promise<string | null> => {

@@ -1,6 +1,6 @@
-# Requisiti e Specifiche di "pizzApp"
+# Requisiti e Specifiche di "Pizza Theory"
 
-Questo documento raccoglie in modo ordinato e strutturato tutte le specifiche fornite per l'app **pizzApp**. È stato creato per poter essere consultato e aggiornato in qualsiasi momento durante lo sviluppo.
+Questo documento raccoglie in modo ordinato e strutturato tutte le specifiche fornite per l'app **Pizza Theory**. È stato creato per poter essere consultato e aggiornato in qualsiasi momento durante lo sviluppo.
 
 ## 1. Stack Tecnologico
 - **Framework Core**: React Native + React Web (unificati via **Expo** e **Expo Router**).
@@ -49,7 +49,7 @@ Ai valori inseriti corrisponderanno i seguenti risultati calcolati:
 - **Area Recensione (Note)**: In questa visualizzazione passata, l'app include un'area testuale in cui l'utente può inserire le sue valutazioni finali per quel preciso impasto (es. com'era il risultato, cosa mancava, cosa gli piaceva o non andava).
 
 ## 4. Motore Matematico e Chimico (Core AVPN)
-A differenza dei calcolatori base, *pizzApp* incorpora un ecosistema validante di livello Master:
+A differenza dei calcolatori base, *Pizza Theory* incorpora un ecosistema validante di livello Master:
 - **Scorporo Lievito Madre**: Idratazione ricalcolata al netto del 50% di acqua intrinseca contenuta nel lievito solido aggiunto all'impasto.
 - **Formula Esponenziale Van't Hoff**: Il lievito scende o sale dinamicamente dimezzando ad ogni incrocio di temperature, e ha un "Cap" del 5% - 20% sulla farina per la pasta madre.
 - **Gestore Frigorifero**: La cella (4°C) blocca la lievitazione (Lieviti) ma favorisce la Maturazione (Enzimi). L'app ci invia gli impasti quando i W sono massicci (>300) o i tempi eccessivi, calcolando anche le ore di estrazione prima dello staglio per far acclimatare.
