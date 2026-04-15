@@ -30,6 +30,10 @@ export default function Results() {
 
     const hydrationPerc = Math.round((result.waterAmount / result.flourAmount) * 100);
 
+    const fridgeAcclimationLine = (result.hoursAcclimation && result.hoursAcclimation > 0)
+      ? `\n- ❄️ Estrazione dal frigo: ~ ${result.hoursAcclimation}h prima di infornare`
+      : '';
+
     const message = `🍕 Ecco la ricetta per il mio impasto!
 
 Parametri:
@@ -42,8 +46,10 @@ Risultati:
 - Acqua: ${result.waterAmount}g (Idratazione: ${hydrationPerc}%)
 - Sale: ${result.saltAmount}g
 - Lievito: ${result.yeastAmount}g
+
+Tempistiche:
 - Ore Temp. Ambiente: ${result.hoursRT}h
-- Ore Frigo: ${result.hoursFridge}h
+- Ore Frigo: ${result.hoursFridge}h${fridgeAcclimationLine}
 
 Creata con pizzApp 🍕`;
 
