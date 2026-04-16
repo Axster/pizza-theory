@@ -49,7 +49,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
       {history.length === 0 ? (
         <Text style={styles.emptyText}>Nessun impasto salvato. Crea la tua prima pizza!</Text>
       ) : (
@@ -109,7 +109,6 @@ export default function HistoryPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   content: {
     padding: 15,
@@ -122,10 +121,8 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 15,
-    backgroundColor: '#1E1E1E',
   },
   details: {
-    backgroundColor: '#2A2A2A',
     padding: 10,
     borderRadius: 8,
     marginBottom: 15,
@@ -134,7 +131,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   notesInput: {
-    backgroundColor: '#1E1E1E',
   },
   saveButton: {
     marginTop: 10,

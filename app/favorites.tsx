@@ -35,7 +35,7 @@ export default function FavoritesPage() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
       {favorites.length === 0 ? (
         <Text style={styles.emptyText}>Non hai ancora salvato nessun impasto nei Preferiti.</Text>
       ) : (
@@ -80,7 +80,6 @@ export default function FavoritesPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   content: {
     padding: 15,
@@ -93,10 +92,8 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 15,
-    backgroundColor: '#1E1E1E',
   },
   details: {
-    backgroundColor: '#2A2A2A',
     padding: 10,
     borderRadius: 8,
     marginTop: 10,

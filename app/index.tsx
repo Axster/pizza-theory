@@ -93,7 +93,7 @@ export default function Home() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       {loading && <PizzaLoader />}
       
       <ScrollView contentContainerStyle={styles.scroll}>
@@ -102,7 +102,7 @@ export default function Home() {
           <Text variant="headlineMedium" style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Pizza Theory</Text>
         </View>
 
-        <Text variant="bodyLarge" style={styles.subtitle}>Calcola il tuo impasto ideale</Text>
+        <Text variant="bodyLarge" style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}>Calcola il tuo impasto ideale</Text>
 
         <TextInput
           label="Quantità Impasto (g) *"
@@ -124,7 +124,7 @@ export default function Home() {
           error={!!formErrors.temp}
         />
 
-        <Text variant="labelLarge" style={styles.label}>Tipo di Lievito</Text>
+        <Text variant="labelLarge" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>Tipo di Lievito</Text>
         <SegmentedButtons
           value={yeastType}
           onValueChange={(val) => setYeastType(val as YeastType)}
@@ -189,7 +189,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    // backgroundColor gestito dal tema tramite PaperProvider
   },
   scroll: {
     padding: 20,
@@ -208,7 +208,6 @@ const styles = StyleSheet.create({
   subtitle: {
     textAlign: 'center',
     marginBottom: 20,
-    color: '#ccc',
   },
   input: {
     marginBottom: 15,
@@ -216,7 +215,6 @@ const styles = StyleSheet.create({
   label: {
     marginTop: 10,
     marginBottom: 8,
-    color: '#ccc',
   },
   segmented: {
     marginBottom: 20,

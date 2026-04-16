@@ -22,6 +22,21 @@ Any AI agent interacting with this repository MUST respect these mathematical co
 - **Storage:** `../utils/storage.ts` bridges `localStorage` (Web) and `AsyncStorage` (Mobile app).
 - **Calculator:** `../utils/calculator.ts` contains all algebraic AVPN deductions.
 - **Validators:** `../utils/validators.ts` throws errors and educational "Tips".
+- **Components:** Organized under `components/` using **Atomic Design** (atoms → molecules → organisms → templates). See `docs/PROJECT_STRUCTURE.md` Section 3.
+
+## ⚛️ Atomic Design — Mandatory Component Rules
+Every new custom UI component MUST be placed in the correct Atomic Design layer under `components/`:
+
+| Layer | Path | Rule |
+|---|---|---|
+| **Atom** | `components/atoms/` | Smallest indivisible unit. No business logic. Primitive props only. |
+| **Molecule** | `components/molecules/` | Composes 2–5 atoms. Minimal local state allowed. No external side-effects. |
+| **Organism** | `components/organisms/` | Full UI section. May use hooks, context, or state. |
+| **Template** | `components/templates/` | Page layout skeleton. No real data — slots/children only. |
+| **Legacy** | `components/ui/` | Expo defaults only. Do NOT add new components here. |
+
+**Naming rule:** `PascalCase` file names (e.g. `DoughResultCard.tsx`). One default export per file.
+**Style rule:** Define styles with `StyleSheet.create()` inside the component file — never inline ad-hoc styles on JSX elements.
 
 ## 🚀 Prossimi Sviluppi (Roadmap Context)
 When adding new features, follow the mapped roadmap:

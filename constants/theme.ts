@@ -1,41 +1,71 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Tema centralizzato di Pizza Theory.
+ * Definisce i token di colore per la modalità chiara e scura e i due temi
+ * React Native Paper (MD3) pronti per essere selezionati dinamicamente in
+ * base al color-scheme del dispositivo.
  */
 
 import { Platform } from 'react-native';
+import { MD3DarkTheme, MD3LightTheme } from 'react-native-paper';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// ─── Brand colors ────────────────────────────────────────────────────────────
+const PRIMARY   = '#FF6347'; // Tomato red
+const SECONDARY = '#FFA500'; // Orange
 
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+// ─── Paper themes ────────────────────────────────────────────────────────────
+
+/** Tema scuro — usato quando il dispositivo è in Dark Mode */
+export const PizzaDarkTheme = {
+  ...MD3DarkTheme,
+  colors: {
+    ...MD3DarkTheme.colors,
+    primary:    PRIMARY,
+    secondary:  SECONDARY,
+    background: '#121212',
+    surface:    '#1E1E1E',
+    surfaceVariant: '#2A2A2A',
   },
 };
 
+/** Tema chiaro — usato quando il dispositivo è in Light Mode */
+export const PizzaLightTheme = {
+  ...MD3LightTheme,
+  colors: {
+    ...MD3LightTheme.colors,
+    primary:    PRIMARY,
+    secondary:  SECONDARY,
+    background: '#F5F5F5',
+    surface:    '#FFFFFF',
+    surfaceVariant: '#EEEEEE',
+  },
+};
+
+// ─── Legacy color tokens (usati da use-theme-color.ts) ───────────────────────
+export const Colors = {
+  light: {
+    text: '#11181C',
+    background: '#F5F5F5',
+    tint: PRIMARY,
+    icon: '#687076',
+    tabIconDefault: '#687076',
+    tabIconSelected: PRIMARY,
+  },
+  dark: {
+    text: '#ECEDEE',
+    background: '#121212',
+    tint: PRIMARY,
+    icon: '#9BA1A6',
+    tabIconDefault: '#9BA1A6',
+    tabIconSelected: PRIMARY,
+  },
+};
+
+// ─── Font stack per piattaforma ──────────────────────────────────────────────
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {

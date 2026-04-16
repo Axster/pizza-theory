@@ -82,11 +82,11 @@ Creata con Pizza Theory 🍕`;
   const hydrationPerc = Math.round((result.waterAmount / result.flourAmount) * 100);
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
       <Text variant="headlineMedium" style={styles.title}>Ricetta Pronta! 🍕</Text>
 
       <Card style={styles.card} mode="elevated">
-        <Card.Title title="Parametri Base (Tuo Input)" titleStyle={{ color: '#fff', fontWeight: 'bold' }} />
+        <Card.Title title="Parametri Base (Tuo Input)" titleStyle={{ color: theme.colors.onSurface, fontWeight: 'bold' }} />
         <Card.Content>
           <View style={styles.row}><Text variant="titleMedium">Totale Impasto:</Text><Text variant="titleMedium" style={styles.value}>{item.params.weight} g</Text></View>
           <View style={styles.row}><Text variant="titleMedium">Temperatura (TA):</Text><Text variant="titleMedium" style={styles.value}>{item.params.temp} °C</Text></View>
@@ -141,7 +141,6 @@ Creata con Pizza Theory 🍕`;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   content: {
     padding: 20,
@@ -150,24 +149,20 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     marginBottom: 20,
-    color: '#fff',
     fontWeight: 'bold',
   },
   card: {
     marginBottom: 20,
-    backgroundColor: '#1E1E1E',
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 4,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#333',
     paddingBottom: 4,
   },
   value: {
     fontWeight: 'bold',
-    color: '#fff',
   },
   button: {
     marginTop: 10,
