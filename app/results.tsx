@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView, Share, Platform } from 'react-native';
 import { Text, Card, Button, ActivityIndicator, useTheme } from 'react-native-paper';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Storage, HistoryItem } from '../utils/storage';
+import { WebHeader } from '../components/molecules/WebHeader';
 
 export default function Results() {
   const { id } = useLocalSearchParams();
@@ -11,6 +13,7 @@ export default function Results() {
   
   const [item, setItem] = useState<HistoryItem | null>(null);
   const [loading, setLoading] = useState(true);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     async function loadData() {
@@ -82,7 +85,9 @@ Creata con Pizza Theory 🍕`;
   const hydrationPerc = Math.round((result.waterAmount / result.flourAmount) * 100);
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+      {Platform.OS === 'web' && <WebHeader title="Risultati Impasto" />}
+      <ScrollView style={styles.container} contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 40) }]}>
       <Text variant="headlineMedium" style={styles.title}>Ricetta Pronta! 🍕</Text>
 
       <Card style={styles.card} mode="elevated">
@@ -134,7 +139,8 @@ Creata con Pizza Theory 🍕`;
       <Button mode="outlined" onPress={() => router.push('/')} style={styles.buttonOutline}>
         Nuovo Impasto
       </Button>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 

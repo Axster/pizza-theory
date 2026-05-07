@@ -1,14 +1,17 @@
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Platform } from 'react-native';
 import { Text, Card, TextInput, Button, IconButton, useTheme } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import { Storage, HistoryItem } from '../utils/storage';
+import { WebHeader } from '../components/molecules/WebHeader';
 
 export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [editingNotes, setEditingNotes] = useState<{ [key: string]: string }>({});
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
 
   useFocusEffect(
     useCallback(() => {
@@ -49,7 +52,9 @@ export default function HistoryPage() {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+      {Platform.OS === 'web' && <WebHeader title="I Miei Impasti" />}
+      <ScrollView style={styles.container} contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 15) }]}>
       {history.length === 0 ? (
         <Text style={styles.emptyText}>Nessun impasto salvato. Crea la tua prima pizza!</Text>
       ) : (
@@ -102,7 +107,8 @@ export default function HistoryPage() {
           );
         })
       )}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 

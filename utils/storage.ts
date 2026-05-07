@@ -33,7 +33,7 @@ const safeSetItem = async (key: string, value: string): Promise<void> => {
   try {
     await AsyncStorage.setItem(key, value);
   } catch (e) {
-    // AsyncStorage non disponibile (es. Expo Go con versione incompatibile)
+    // AsyncStorage not available (e.g. Expo Go with incompatible version)
   }
 };
 
@@ -59,7 +59,7 @@ export const Storage = {
     };
     let newHistory = [newItem, ...history];
     
-    // Logic per limitare ai soli 30 impasti recenti (salvo i vecchi preferiti)
+    // Logic to limit to the 30 most recent doughs (preserving old favorites)
     newHistory.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const newest30 = newHistory.slice(0, 30);
     const olderItems = newHistory.slice(30);
@@ -81,7 +81,7 @@ export const Storage = {
       item.id === id ? { ...item, isFavorite: !item.isFavorite } : item
     );
     
-    // Cleanup if a favorite was toggled off and it's beyond the 30 mark
+    // Cleanup if a favorite was toggled off and it's beyond the 30-item limit
     updatedHistory.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const newest30 = updatedHistory.slice(0, 30);
     const olderItems = updatedHistory.slice(30);

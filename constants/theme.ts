@@ -1,83 +1,90 @@
 /**
- * Tema centralizzato di Pizza Theory.
- * Definisce i token di colore per la modalità chiara e scura e i due temi
- * React Native Paper (MD3) pronti per essere selezionati dinamicamente in
- * base al color-scheme del dispositivo.
+ * Centralized Pizza Theory theme.
+ * Colors extracted from official mockups (design-home-dark.png / design-home-light.jpg).
  */
 
-import { Platform } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme } from 'react-native-paper';
 
 // ─── Brand colors ────────────────────────────────────────────────────────────
-const PRIMARY   = '#FF6347'; // Tomato red
-const SECONDARY = '#FFA500'; // Orange
+export const BRAND_RED    = '#C62828';   // carmine red — button, accents
+export const BRAND_RED_LT = '#E53935';   // lighter red
+export const BRAND_ORANGE = '#FF8A65';   // warm orange (secondary)
 
-// ─── Paper themes ────────────────────────────────────────────────────────────
+// ─── Dark Palette ────────────────────────────────────────────────────────────
+const DARK_BG       = '#141414';  // main background (darker than surface)
+const DARK_SURFACE  = '#2C2C2C';  // card, drawer, TextInput
+const DARK_SURFACE2 = '#383838';  // surface variant
 
-/** Tema scuro — usato quando il dispositivo è in Dark Mode */
+// ─── Light Palette ───────────────────────────────────────────────────────────
+const LIGHT_BG      = '#EDE8E3';  // warm ivory cream
+const LIGHT_SURFACE = '#FFFFFF';  // card, drawer
+const LIGHT_SURFACE2= '#F2EFEB';  // surface variant
+
+// ─── Paper Themes ────────────────────────────────────────────────────────────
+
+/** Dark theme — Dark Mode */
 export const PizzaDarkTheme = {
   ...MD3DarkTheme,
+  dark: true,
   colors: {
     ...MD3DarkTheme.colors,
-    primary:    PRIMARY,
-    secondary:  SECONDARY,
-    background: '#121212',
-    surface:    '#1E1E1E',
-    surfaceVariant: '#2A2A2A',
+    // Primary (button, accents)
+    primary:              BRAND_RED,
+    onPrimary:            '#FFFFFF',         // ← white text on the button
+    primaryContainer:     '#7B1515',
+    onPrimaryContainer:   '#FFFFFF',
+    // Secondary (SegmentedButton checked)
+    secondary:            BRAND_ORANGE,
+    onSecondary:          '#FFFFFF',
+    secondaryContainer:   BRAND_RED,         // ← active tab background for SegmentedButton
+    onSecondaryContainer: '#FFFFFF',         // ← white text on the active tab
+    // Surfaces
+    background:           DARK_BG,
+    surface:              DARK_SURFACE,
+    surfaceVariant:       DARK_SURFACE2,
+    onBackground:         '#FFFFFF',
+    onSurface:            '#ECECEC',
+    onSurfaceVariant:     '#AAAAAA',
+    // Borders
+    outline:              '#484848',
+    outlineVariant:       '#3A3A3A',
   },
 };
 
-/** Tema chiaro — usato quando il dispositivo è in Light Mode */
+/** Light theme — Light Mode */
 export const PizzaLightTheme = {
   ...MD3LightTheme,
+  dark: false,
   colors: {
     ...MD3LightTheme.colors,
-    primary:    PRIMARY,
-    secondary:  SECONDARY,
-    background: '#F5F5F5',
-    surface:    '#FFFFFF',
-    surfaceVariant: '#EEEEEE',
+    primary:              BRAND_RED,
+    onPrimary:            '#FFFFFF',
+    primaryContainer:     '#FFCDD2',
+    onPrimaryContainer:   '#7B0000',
+    secondary:            BRAND_ORANGE,
+    onSecondary:          '#FFFFFF',
+    secondaryContainer:   BRAND_RED,
+    onSecondaryContainer: '#FFFFFF',
+    background:           LIGHT_BG,
+    surface:              LIGHT_SURFACE,
+    surfaceVariant:       LIGHT_SURFACE2,
+    onBackground:         '#1A1A1A',
+    onSurface:            '#1A1A1A',
+    onSurfaceVariant:     '#555555',
+    outline:              '#C0B8B0',
+    outlineVariant:       '#DAD5D0',
   },
 };
 
-// ─── Legacy color tokens (usati da use-theme-color.ts) ───────────────────────
+// ─── Legacy color tokens ─────────────────────────────────────────────────────
 export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#F5F5F5',
-    tint: PRIMARY,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: PRIMARY,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#121212',
-    tint: PRIMARY,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: PRIMARY,
-  },
+  light: { text: '#1A1A1A', background: LIGHT_BG, tint: BRAND_RED, icon: '#687076', tabIconDefault: '#687076', tabIconSelected: BRAND_RED },
+  dark:  { text: '#ECECEC', background: DARK_BG,  tint: BRAND_RED, icon: '#9BA1A6', tabIconDefault: '#9BA1A6', tabIconSelected: BRAND_RED },
 };
 
-// ─── Font stack per piattaforma ──────────────────────────────────────────────
-export const Fonts = Platform.select({
-  ios: {
-    sans: 'system-ui',
-    serif: 'ui-serif',
-    rounded: 'ui-rounded',
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+// ─── Slider colors ────────────────────────────────────────────────────────────
+export const SliderColors = {
+  tempGradient: ['#F5C842', '#E8502A', '#C0392B'] as string[],
+  hydration:    '#42A5F5',
+  strength:      BRAND_RED,
+};

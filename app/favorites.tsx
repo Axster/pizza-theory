@@ -1,13 +1,16 @@
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Platform } from 'react-native';
 import { Text, Card, Button, IconButton, useTheme } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import { Storage, HistoryItem } from '../utils/storage';
+import { WebHeader } from '../components/molecules/WebHeader';
 
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<HistoryItem[]>([]);
   const [top30Ids, setTop30Ids] = useState<Set<string>>(new Set());
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
 
   useFocusEffect(
     useCallback(() => {
@@ -35,7 +38,9 @@ export default function FavoritesPage() {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+      {Platform.OS === 'web' && <WebHeader title="Impasti Preferiti" />}
+      <ScrollView style={styles.container} contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 15) }]}>
       {favorites.length === 0 ? (
         <Text style={styles.emptyText}>Non hai ancora salvato nessun impasto nei Preferiti.</Text>
       ) : (
@@ -73,7 +78,8 @@ export default function FavoritesPage() {
           );
         })
       )}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
