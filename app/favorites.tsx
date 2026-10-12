@@ -70,7 +70,7 @@ export default function FavoritesPage() {
                   <Text>Lievito: {item.result.yeastAmount}g | Sale: {item.result.saltAmount}g</Text>
                   <Text>Tempo TA: {item.result.hoursRT}h | Frigo: {item.result.hoursFridge}h</Text>
                   {item.notes ? (
-                    <Text style={styles.notesText}>Nota: "{item.notes}"</Text>
+                    <Text style={styles.notesText}>Nota: “{item.notes}”</Text>
                   ) : null}
                 </View>
               </Card.Content>
