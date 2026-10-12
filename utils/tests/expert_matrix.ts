@@ -1,5 +1,5 @@
-import { calculateDough } from './utils/calculator';
-import { validateInput } from './utils/validators';
+import { calculateDough } from '../calculator.ts';
+import { validateInput } from '../validators.ts';
 
 const cases = [
   { name: "[1] Classic Verace Diretto", temp: 23, leaveningTime: 8, hydration: 60, flourStrength: 240, yeastType: "birra" },
@@ -34,8 +34,8 @@ const results = cases.map(c => {
           warnings: errors.length > 0 ? errors : ["Nessuno (Perfetto)"],
           tips: calc.infoTips && calc.infoTips.length > 0 ? calc.infoTips : ["Nessuno"]
       };
-  } catch(e: any) {
-      return { scenario: c.name, error: e.message };
+  } catch (e) {
+      return { scenario: c.name, error: e instanceof Error ? e.message : String(e) };
   }
 });
 

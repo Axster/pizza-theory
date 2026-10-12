@@ -1,4 +1,4 @@
-import { DoughParams } from './calculator';
+import type { DoughParams } from './calculator';
 
 export interface ValidationError {
   field: 'weight' | 'temp' | 'time' | 'hydration' | 'strength' | 'general' | 'yeast';

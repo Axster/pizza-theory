@@ -1,148 +1,196 @@
+<div align="center">
+
 # Pizza Theory 🍕
 
-**Pizza Theory** è un calcolatore per impasti diretti di pizza, sviluppato internamente come un'applicazione "Universale" usando **React Native** ed **Expo**. L'applicazione è predisposta in modo nativo per funzionare cross-platform sui sistemi operativi Mobile (iOS, Android) e sui browser web mantenendo la stessa UI e la medesima struttura di componenti.
+**Il calcolatore di impasti che completa da solo i parametri che non conosci.**
 
-> Puoi trovare i file di progettazione completi e documentati ([`SPECIFICATIONS.md`](docs/SPECIFICATIONS.md), [`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) e [`AI_INSTRUCTIONS.md`](docs/AI_INSTRUCTIONS.md)) all'interno della cartella `/docs`.
+[![Expo](https://img.shields.io/badge/Expo-SDK%2054-000020?logo=expo&logoColor=white)](https://expo.dev)
+[![React Native](https://img.shields.io/badge/React%20Native-0.81-61DAFB?logo=react&logoColor=black)](https://reactnative.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Platforms](https://img.shields.io/badge/iOS%20·%20Android%20·%20Web-universale-C62828)](#)
 
----
-
-## 🧮 Obiettivo e Filosofia (Il Metodo AVPN)
-
-L'obiettivo fondamentale dell'algoritmo di **Pizza Theory** è usare come base intrinseca i rigidi valori stabiliti dall'**Associazione Verace Pizza Napoletana (AVPN)**, per poi ricalcolarli in modo "intelligente" e matematico qualora le esigenze o le condizioni esterne dell'utente varino.
-
-La logica del motore agisce su due binari:
-
-1. **AVPN Puro (Il Vangelo)**: Se i parametri facoltativi (Idratazione %, Ore Lievitazione, Forza W) non vengono inseriti, i valori tradizionali AVPN diventano l'assoluto punto di riferimento (es. idratazione matematica 57% e maturazioni base di 8h a temperatura ambiente). **L'unico fattore che farà ricalcolare i dosaggi "scolpiti sulla pietra" sarà in questo caso la variazione di Temperatura Ambiente** inserita, che andrà a modificare esponenzialmente l'utilizzo dei lieviti con la curva di Van't Hoff.
-2. **Adattamento Esperto**: Se al contrario l'utente necessita di condizioni particolari (desidera produrre Impasti ad Alta Idratazione, maturazioni in 48 ore in cella, l'uso di farine proteiche W400, ecc.), l'algoritmo percepirà i valori fuori dalla "comfort zone" convenzionale dell'arte bianca per ricalibrare (tramite deduzioni incrociate e uso automatico del frigorifero) tempistiche, spinta del lievito e assorbimenti.
-
-Alla base delle equazioni vi sono questi principi cardine:
-
-- **Volume totale scalare**: Dal totale dell'impasto inserito dall'utente viene isolata in percentuale la farina. L'ingrediente principale definisce in cascata tutti gli altri dosaggi in percentuali esatte (cd. "Braker's Percentage").
-- **Acqua (Idratazione)**: Modulata in base alla forza _W_ o tempo, ma tenuta idealmente intorno al 60% per idratazioni standard da disciplinare.
-- **Sale**: La salinità è fissata costantemente al parametro ottimale che incrocia le quote AVPN (~2.5% netto in relazione al peso assoluto o ~50g per Litro d'acqua).
-- **Lievito (Birra/Madre/Secco)**: Il componente più dinamico. Le formule scalano esponenzialmente la grammatura proporzionandola sia alla Temperatura Ambiente fornita, alla Forza, e modulata sull'asse tempo-idratazione secondo tabelle euristiche avanzate.
+</div>
 
 ---
 
-## 🧬 Biologia: Lievitazione vs Maturazione
+## Cos'è
 
-Spesso nell'arte bianca si fondono i concetti di Lievitazione e Maturazione, ma sono fenomenti biologicamente distinti. **L'algoritmo di Pizza Theory ingloba categoricamente entrambi all'interno del calcolo generale delle tue "Ore di Lievitazione"**:
+Pizza Theory calcola dosi e tempistiche per impasti **diretti** di pizza napoletana.
+A differenza dei calcolatori lineari, è un **sistema esperto**: radicato nel disciplinare
+**AVPN**, deduce a cascata i parametri che non gli dai e **blocca le combinazioni fisicamente
+impossibili spiegandoti il perché**.
 
-- **Lievitazione (L'Aumento di Volume)**: È l'azione in cui il lievito ingerisce zuccheri e produce gas gonfiando il glutine. Avviene in modo estremamente rapido a Temperatura Ambiente, ma si anestetizza quasi totalmente posizionando l'impasto in Frigorifero.
-- **Maturazione (La Digeribilità e Sapore)**: È il lavoro a lenta cessione degli enzimi naturali della farina che scompongono gli amidi complessi. Questo processo è ciò che rende la pizza esplosiva in forno e leggerissima nello stomaco. Al contrario della lievitazione, **la maturazione non si ferma al freddo**!
-  L'engine di Pizza Theory opera su queste basi: quando il sistema decide arbitrariamente di piazzare per lunghe ore il tuo impasto in Frigorifero (es. se selezioni Farine W300 o più), lo fa proprio con lo scopo di placare a forza la _Lievitazione_, per dare il tempo chimico alla _Maturazione enzimatica_ di disintegrare le proteine complesse di quella farina, preservando l'impasto dal rovistarsi!
+Un solo codice, tre piattaforme: **iOS, Android e Web** con la stessa interfaccia
+(React Native + Expo).
 
-### 🔮 Prossimi Sviluppi (Roadmap)
-
-Siamo costantemente al lavoro per espandere le capacità e la componente didattica del calcolatore! Di seguito le priorità di sviluppo per i prossimi aggiornamenti:
-
-1. **Sezione "Forno" e "Cottura" in Ricetta**
-   Disporremo per l'utente una sezione forno, in cui poter inserire la temperatura massima del forno (facoltativa, default a 350°C). Se inserita, apparirà nella ricetta il tempo di cottura, calcolato in base alla temperatura inserita e al tipo di impasto (idratazione). Aggiungeremo all'interno della sezione (non come tip) l'informazione che l'uso di un forno che non arriva ad almeno 300 gradi (come i classici elettrici da cucina) è fortemente sconsigliato. Ci sarà anche una spunta facoltativa "Cielo e platea regolabili" (con un tip che ne spiega il significato): se selezionata, nella ricetta apparirà la temperatura separata di cielo e platea, altrimenti comparirà la temperatura generale.
-
-2. **Inserimento Tip Informativi**
-   L'applicazione verrà dotata di pratiche icone (tip) per spiegare nel dettaglio le dinamiche dell'impasto, le voci di calcolo principali e i consigli su impasto e cottura.
-
-3. **Aggiornamento Lieviti**
-   Oltre ai lieviti selezionabili attuali (Lievito di birra fresco, secco istantaneo, madre solido), aggiungeremo una voce "Altri tipi" che prevedrà:
-   - _Lievito madre liquido_ (Li.Co.Li.)
-   - _Lievito di birra secco attivo_ (mostrando tra i consigli una breve spiegazione su come attivarlo prima dell'uso).
-
-4. **Puntata e Appretto**
-   Verrà inserita la ripartizione scientifica delle ore dedicate alla "Puntata" (prima lievitazione in massa) e "Appretto" (lievitazione in panetti), incrociate alle tempistiche di cella frigorifera o ambiente. Vi sarà una sezione dedicata nella ricetta finale, in caso di selezione di pizza classica/verace che è la selezione di default.
-
-5. **Switch Pizza in Teglia o Classica/Verace**
-   Aggiunta di uno switch per scegliere "Impasto per pizza in teglia" o "Classica (verace)" per agganciare in automatico diversi valori di default al motore di calcolo, sviluppando guide e parametri ad hoc per l'impasto in teglia.
-
-6. **Impostazioni**
-   Gestione preferenze utente: cambio lingua (Italiano/Inglese), cambio tema (Chiaro/Scuro), unità di misura del peso (g, kg, lb, oz) e temperatura (°C o °F).
-
-7. **Modifica Sezione Farina (Inserimento manuale e Multi-Farina)**
-   Sotto il campo W della farina inseriremo la spunta "Inserisci manualmente il peso della farina" (con tip annesso). Se flaggata, si disabiliterà il campo totale impasto e comparirà il campo "peso", che ricalcolerà la quantità finale dell'impasto. Inoltre, implementeremo lo switch "Una farina / Più farine". Scegliendo "Più farine" si potranno aggiungere fino a 5 farine diverse fornendo il relativo W (e il peso, se la spunta suddetta è attiva; altrimenti il motore bilancerà le quantità per raggiungere la forza media necessaria). I controlli incrociati valideranno sempre se le scelte dell'utente sono compatibili.
-
-8. **Calcolo W**
-   Una pagina dedicata con una select o delle tab per scegliere la modalità di calcolo:
-   - _W medio_: inserendo il peso e il W di diverse farine, calcola il W finale dell'impasto in media ponderata.
-   - _Proporzione farine_: inserendo il W desiderato e i W delle diverse farine disponibili, restituisce il peso esatto di ogni farina da utilizzare.
-   - _Ottieni W_: inserendo la percentuale di proteine per 100g e la tipologia di farina (grano tenero: 00, 0, 1, 2, integrale, ecc.), calcola il W stimato della farina. Non sarà possibile inserire farine diverse dal grano tenero.
-     I calcoli saranno condivisibili; tutti i campi obbligatori con limiti esatti impostati.
-
-9. **Calcolo Idratazione**
-   Una pagina dedicata con uno switch "A partire da:" con opzioni "Percentuale idratazione" o "Dosi".
-   - _Percentuale_: si inserisce il peso della farina e la %, ricavando la quantità d'acqua.
-   - _Dosi_: si inserisce farina totale e l'acqua in grammi/litri per calcolare la percentuale idratata.
-
-10. **Temperatura Acqua e Sezione Dati Avanzati con Modalità Impasto**
-    Una nuova area "Dati Avanzati" raggrupperà Modalità Impasto e Prefermento.
-    La _"Modalità Impasto"_ permetterà di selezionare: A mano, Impastatrice o Planetaria, perfezionando il calcolo del riscaldamento della massa in lavorazione. Il calcolo della _Temperatura dell'acqua_ valuterà l'idratazione, la TA e la modalità d'impasto per indicare di usare acqua da frigo, a TA o riscaldata (indicando i gradi). Per l'impasto "a mano", i consigli della ricetta suggeriranno pause e pieghe per ottimizzare la forza del glutine.
-
-11. **Prefermento (Biga o Poolish)**
-    All'interno della sezione "Dati Avanzati" ci sarà uno switch tra Biga e Poolish. A seguito della selezione, verrà aggiunta in ricetta una sezione "Prefermento" con le rispettive quantità di acqua, farina (calcolata dinamicamente anche su multi-farine) e lievito, sottraendo i pesi all'impasto per ricalcoleranno le dosi finali con precisione scientifica.
-
-12. **Pagina Glossario**
-    All'interno del menu risiederà un glossario con la spiegazione dei termini tecnici utilizzati (W, Idratazione, Tipi di Lievito, etc.).
-
-13. **Redesign App**
-    Rivisitazione dell'interfaccia in maniera progressiva, puntando a standard di alta qualità visuale per elevare l'esperienza utente a un livello professionale premium.
-
-14. **Account Utente e Sincronizzazione Cloud**
-    Introduzione di un sistema di autenticazione opzionale che permetterà all'utente di creare un account personale. Una volta effettuato l'accesso, le preferenze, le ricette salvate e le impostazioni verranno archiviate in modo sicuro su cloud e sincronizzate automaticamente su tutti i dispositivi, eliminando la dipendenza esclusiva dallo storage locale del dispositivo.
-
-### 🛡️ Controlli di Proporzione Intelligenti
-
-L'applicativo funge inoltre da tutor se si cerca di inserire forzatamente manualità di calcolo fisicamente disastrose. I seguenti check scattano provocando un blocco **esclusivamente se si vanno a compilare incrociando multipli parametri facoltativi contemporaneamente**:
-
-- **Piu Tempo = Server Farina più Forte**: Selezionare poco tempo (es. 4h) per un W400 causerà pizze di gomma crude; viceversa lunghe maturazioni (es. 24h) su W200 genererebbero un brodo acido privo di glutine. L'app vi fermerà a scopo educativo!
-- **Piu Idratazione = Serve Farina più Forte**: Un'idro elevatissima (es. +70%) gettata su un W debole vi trasformerà l'impasto in una colla ingestibile. Un Popup vi consiglierà ricalibrazioni.
-- **Acqua elevata richiede tempo**: Mai usare le percentuali di idratazione esagerata in lievitazioni rapide (sotto le 8h) perché servono soste prolungate o ore in frigo per far assorbire l'idratazione estrema. Penserà a tutto il Controllo Proporzioni!
-
-### 🎯 Motore di Deduzione a Catena (Effetto Domino)
-
-Il vantaggio enorme del motore AVPN di base è che puoi **compilare anche un solo singolo campo** e goderti la magia della chimica automatizzata dell'app.
-Se l'utente ha il vizio estremo di voler idratare un impasto al 90% ma tralascia totalmente tutto il resto dei parametri, l'App _non sposerà l'idratazione con i valori deboli AVPN di base_, altrimenti uscirebbe una pozzanghera, ma **provvederà a evolversi a cascata**: dedurrà che per sorreggere il 90% dovrà trasformare la farina a un brutale **W390**. Da quell'indicatore percepirà istantaneamente che una maglia glutinica del genere merita **23 ore fitte di stop**. E accorgendosi dei valori estremi attivati su se stessi, ritirerà in via automatica da sola ben **21 di quelle ore scaturendoti l'uso in Frigorifero** per domare la creatura.
+```
+Peso impasto · Temperatura · Tipo di lievito        ← gli unici campi obbligatori
+                    ↓
+        Farina · Acqua · Sale · Lievito
+        Ore a temperatura ambiente · Ore in frigo
+        Forza W consigliata · Consigli dell'esperto
+```
 
 ---
 
-## 🚀 Come avviare l'app
+## Come funziona il motore
 
-Assicurati di essere nella cartella root del progetto (`/Users/andrea/Desktop/Pizza Theory`) dal tuo terminale e, qualora non l'avessi ancora fatto, esegui:
+### 🧮 Due regimi di calcolo
+
+**1. AVPN puro — il vangelo.**
+Se non specifichi nulla di facoltativo, valgono i valori del disciplinare: idratazione 57 %,
+8 ore di maturazione, W240. L'unica variabile che ricalcola i dosaggi è la **temperatura
+ambiente**, che modula il lievito secondo la legge di Q₁₀ (raddoppio ogni ~7 °C).
+
+**2. Adattamento esperto.**
+Se chiedi condizioni particolari — alta idratazione, 48 ore in cella, farine W400 — l'algoritmo
+riconosce i valori fuori dalla comfort zone e ricalibra tempistiche, spinta del lievito e
+assorbimenti, mandando l'impasto in frigorifero quando serve.
+
+### 🎯 L'effetto domino
+
+Puoi compilare **un solo campo** e lasciare che la chimica faccia il resto.
+
+> Chiedi un'idratazione al **90 %** e basta.
+> L'app deduce che per reggere quell'acqua serve un **W390** → che quella maglia glutinica
+> richiede **23 ore** di maturazione → e che 21 di quelle ore vanno passate **in frigorifero**,
+> per frenare la lievitazione e lasciar lavorare gli enzimi.
+
+Un campo, tre deduzioni.
+
+### 🧬 Lievitazione ≠ maturazione
+
+Sono due processi distinti, e l'algoritmo li tratta come tali:
+
+| | Cos'è | In frigorifero |
+|---|---|---|
+| **Lievitazione** | Il lievito produce CO₂ e gonfia il glutine | **Si ferma** quasi del tutto |
+| **Maturazione** | Gli enzimi scompongono amidi e proteine | **Continua** indisturbata |
+
+Da qui l'unica ragione per cui l'app manda un impasto in cella: **disaccoppiare** i due processi.
+Con una W300 o più, si frena a forza la lievitazione per dare agli enzimi il tempo di rendere
+l'impasto digeribile — senza che nel frattempo collassi.
+
+### 🛡️ L'app come tutor
+
+Alcune combinazioni sono fisicamente disastrose, e l'app le blocca **spiegando la chimica**
+(solo quando incroci due o più parametri facoltativi, altrimenti deduce e basta):
+
+- **24 ore su una W200** → il glutine si degrada: panetto acido e collassato
+- **W400 in 4 ore** → amidi non scomposti: pasta gommosa e indigeribile
+- **Idratazione 75 % in meno di 8 ore** → l'acqua non fa in tempo a essere assorbita
+
+---
+
+## Avvio rapido
 
 ```bash
 npm install
 ```
 
-### 💻 Avvio sul Web
-
-Per avviare l'app come un normale sito internet nel browser in modalità sviluppatore:
+### Il comando unico
 
 ```bash
-npm run web
+npm run run-dev -- --web        # 🌐 Browser su http://localhost:8081
+npm run run-dev -- --android    # 🤖 Dispositivo Android fisico collegato
+npm run run-dev -- --ios        # 🍎 iPhone/iPad fisico collegato
 ```
 
-Questo genererà un bundler per il web e aprirà l'app all'indirizzo `http://localhost:8081`.
+> `run-dev` verifica che ci sia un dispositivo **fisico** collegato prima di partire e
+> **non avvia mai emulatori o simulatori**. Se non ne trova, ti spiega in console cosa manca.
+> Ogni argomento extra viene inoltrato a `expo start`:
+> `npm run run-dev -- --android --clear`
 
-### 📱 Avvio su Smartphone Fisico (tramite Expo Go)
+### Alternative
 
-Rendi attiva l'app sul tuo cellulare facilmente senza dover compilare tutto il codice:
+| Comando | Cosa fa |
+|---|---|
+| `npm start` | Dev server con QR code per **Expo Go** (iOS e Android, senza cavo) |
+| `npm run android` / `npm run ios` | Avvia **anche** emulatore/simulatore, se li vuoi |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint |
+
+### Verificare il motore
 
 ```bash
-npx expo start
+node --experimental-strip-types utils/tests/expert_matrix.ts
 ```
 
-1. Comparirà un **QR code** all'interno del terminale.
-2. Assicurati di scaricare l'app gratuita **Expo Go** da App Store (iOS) o Google Play Store (Android).
-3. Apri Expo Go e procedi con la scansione del codice QR (su iOS puoi usare direttamente la fotocamera del tuo iPhone).
-
-### 🖥️ Avvio su Emulatori (Se installati su Mac)
-
-Qualora tu avessi installati Android Studio o Xcode nel tuo Mac, puoi avviare i rispettivi simulatori nativi:
-
-- **Simulatore iOS (Xcode)**: Esegui `npm run ios` (oppure avvia con server `npx expo start` e premi il tasto `i` sulla tastiera).
-- **Emulatore Android (Android Studio)**: Esegui `npm run android` (oppure avvia con `npx expo start` e premi il tasto `a`).
+Esegue la matrice di regressione: 10 scenari d'impasto con input, output, warning e tip.
 
 ---
 
-## 🤖 AI Agent Context (Spec-Driven Development)
+## Struttura
 
-All'interno della root del progetto noterai la presenza dei file `.cursorrules` e `.clinerules`.
-Questi file fungono da "Direttiva Suprema" per l'Intelligenza Artificiale (come agenti integrati in Cursor IDE o estensioni come Roo/Cline su VSCode).
-**Vengono letti automaticamente dall'AI all'apertura del progetto**, passando all'agente l'intero contesto ingegneristico e le formule matematiche del disciplinare AVPN, prima ancora che venga digitato un singolo messaggio in chat. Questo assicura che nessuna futura sessione di sviluppo comprometta mai le complesse equazioni di bilanciamento o lo scorporo del lievito madre implementate nel codice.
+```
+app/           Rotte expo-router (index, results, history, favorites)
+components/    Atomic Design: atoms → molecules → organisms → templates
+utils/
+  calculator.ts    🔬 Il motore — tutta la matematica AVPN
+  validators.ts    Blocchi assoluti e di proporzione
+  storage.ts       Ponte AsyncStorage ↔ localStorage
+constants/     Temi chiaro/scuro e token di brand
+scripts/       run-dev.js
+docs/          Documentazione (vedi sotto)
+```
+
+---
+
+## Documentazione
+
+| Documento | Contenuto |
+|---|---|
+| [`docs/ALGORITHM.md`](docs/ALGORITHM.md) | **Ontologia del motore**: variabili, equazioni, invarianti |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Struttura, stack, convenzioni, flusso |
+| [`docs/SPECIFICATIONS.md`](docs/SPECIFICATIONS.md) | Requisiti di prodotto e linee guida di design |
+| [`docs/BACKEND.md`](docs/BACKEND.md) | Analisi e proposta per backend e database |
+
+### La regola che tiene insieme tutto
+
+> `docs/ALGORITHM.md` è **normativo**: definisce il modello, e `utils/calculator.ts` ne è
+> l'implementazione. **Ogni modifica al motore richiede l'aggiornamento del documento nello stesso
+> commit.** Prima si aggiorna il modello, poi il codice.
+
+---
+
+## Sviluppo assistito da AI
+
+Il progetto è predisposto per lo **spec-driven development** con agenti AI.
+
+| File | Letto da |
+|---|---|
+| **`AGENTS.md`** | Claude Code, Cursor, Cline/Roo, Codex — **file canonico** delle regole |
+| `CLAUDE.md` | Claude Code: importa `AGENTS.md` e aggiunge il resto |
+| `.claude/` | Comandi, permessi e hook di Claude Code |
+
+Le regole stanno **in un solo posto**. `AGENTS.md` è uno standard aperto letto nativamente dagli
+agenti principali, quindi non servono file di regole per singolo strumento: niente duplicazione,
+niente contesto che diverge.
+
+**Comandi disponibili in Claude Code:**
+
+| Comando | Cosa fa |
+|---|---|
+| `/calcolo` | Verifica il motore contro l'ontologia e la matrice di regressione |
+| `/componente` | Crea un componente rispettando l'Atomic Design |
+| `/parita` | Audit delle divergenze fra web e mobile |
+| `/stato` | Aggiorna le note di lavoro |
+
+Un hook `PostToolUse` ricorda automaticamente di aggiornare `docs/ALGORITHM.md` quando viene
+toccato `utils/calculator.ts`.
+
+---
+
+## Convenzioni
+
+- **Commit:** [Conventional Commits](https://www.conventionalcommits.org), imposti da husky + commitlint
+  (`feat:` `fix:` `docs:` `refactor:` `chore:` `test:` `style:` `perf:`)
+- **Componenti:** Atomic Design — vedi [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) §3
+- **Stile:** solo `StyleSheet.create()`, mai CSS/SCSS, mai colori cablati (sempre da `useTheme()`)
+- **Prima di aprire una PR:** `npm run typecheck && npm run lint`
+
+---
+
+<div align="center">
+<sub>Costruito con React Native, Expo e un discreto rispetto per il disciplinare AVPN.</sub>
+</div>
